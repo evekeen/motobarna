@@ -1,0 +1,161 @@
+{
+  "stage": "interview",
+  "title": "MotoBarna Website Goal",
+  "goalSlug": "motobarna-website",
+  "questions": [
+    {
+      "id": "v1_scope",
+      "prompt": "What should the first implementation include?",
+      "description": "The committed spec already defines a one-page landing site. This decides how complete V1 should be.",
+      "answerMode": "multi-custom",
+      "recommendedAnswer": "Build a polished one-page static landing site from the spec, including responsive UI, Telegram CTA, MotoGymkhana explainer, Sunday community section, trips section, FAQ, SEO metadata, sitemap/robots, structured data, and placeholder/configurable content where real assets are not available yet.",
+      "recommendedOptionIds": [
+        "one_page",
+        "responsive",
+        "seo",
+        "placeholder_assets"
+      ],
+      "options": [
+        {
+          "id": "one_page",
+          "label": "One-page landing site"
+        },
+        {
+          "id": "responsive",
+          "label": "Mobile + desktop polish"
+        },
+        {
+          "id": "seo",
+          "label": "SEO/AI-search foundations"
+        },
+        {
+          "id": "placeholder_assets",
+          "label": "Use placeholders until real photos"
+        },
+        {
+          "id": "analytics",
+          "label": "Add privacy-light analytics hooks"
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": "tech_stack",
+      "prompt": "Which technical direction should we optimize for?",
+      "description": "The recommendation is a modern static site: fast, simple, and easy to deploy.",
+      "answerMode": "single-custom",
+      "recommendedAnswer": "Use Astro with TypeScript, scoped CSS or Tailwind, static output, optimized images, minimal JavaScript, and deploy on Vercel or Cloudflare Pages.",
+      "recommendedOptionIds": [
+        "astro_static"
+      ],
+      "options": [
+        {
+          "id": "astro_static",
+          "label": "Astro static site"
+        },
+        {
+          "id": "next_static",
+          "label": "Next.js static/export"
+        },
+        {
+          "id": "vite_react",
+          "label": "Vite React SPA"
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": "content_privacy",
+      "prompt": "How should V1 handle Telegram, photos, and location privacy?",
+      "description": "The current spec recommends sharing the exact parking-lot pin only inside Telegram.",
+      "answerMode": "multi-custom",
+      "recommendedAnswer": "Keep the exact location private and say the pin is in Telegram. Use a configurable Telegram URL placeholder until the real invite link is provided. Use the visual concept and high-quality local-style placeholders for now, with clear image slots for real MotoBarna photos later.",
+      "recommendedOptionIds": [
+        "location_private",
+        "telegram_config",
+        "image_slots"
+      ],
+      "options": [
+        {
+          "id": "location_private",
+          "label": "Keep location private"
+        },
+        {
+          "id": "telegram_config",
+          "label": "Configurable Telegram URL"
+        },
+        {
+          "id": "image_slots",
+          "label": "Real-photo slots"
+        },
+        {
+          "id": "concept_asset",
+          "label": "Use concept visual"
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": "language",
+      "prompt": "What language approach should V1 use?",
+      "description": "This affects copy, SEO metadata, and future multilingual structure.",
+      "answerMode": "single-custom",
+      "recommendedAnswer": "English-first V1 with natural Barcelona search-language cues and a FAQ note that the community can mix English, Spanish, Catalan, and other languages. Add Spanish/Catalan pages later only if they can be maintained.",
+      "recommendedOptionIds": [
+        "english_first"
+      ],
+      "options": [
+        {
+          "id": "english_first",
+          "label": "English-first"
+        },
+        {
+          "id": "multilingual_now",
+          "label": "Multilingual now"
+        },
+        {
+          "id": "spanish_first",
+          "label": "Spanish-first"
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": "quality_bar",
+      "prompt": "What quality bar should the implementation meet before it is considered done?",
+      "description": "This turns the spec into concrete verification work.",
+      "answerMode": "multi-custom",
+      "recommendedAnswer": "Run build/type checks, verify responsive layout in browser screenshots, check Lighthouse-style performance/accessibility/SEO basics, confirm all CTAs point to the configured Telegram URL, and ensure visible SEO copy/schema/robots/sitemap are present.",
+      "recommendedOptionIds": [
+        "build_checks",
+        "responsive_browser",
+        "seo_checks",
+        "accessibility",
+        "cta_checks"
+      ],
+      "options": [
+        {
+          "id": "build_checks",
+          "label": "Build/type checks"
+        },
+        {
+          "id": "responsive_browser",
+          "label": "Responsive browser QA"
+        },
+        {
+          "id": "seo_checks",
+          "label": "SEO technical checks"
+        },
+        {
+          "id": "accessibility",
+          "label": "Accessibility checks"
+        },
+        {
+          "id": "cta_checks",
+          "label": "Telegram CTA checks"
+        }
+      ],
+      "required": true
+    }
+  ]
+}
