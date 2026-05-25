@@ -1,0 +1,277 @@
+---
+import { SITE, localePaths, type Locale } from "@/data/site";
+import type { LandingContent } from "@/data/content";
+
+type Props = {
+  page: LandingContent;
+  locale: Locale;
+};
+
+const { page, locale } = Astro.props;
+const otherLocale: Locale = locale === "en" ? "ru" : "en";
+const videoEmbeds = SITE.youtubeVideos.map((video) => ({
+  ...video,
+  embedUrl: `https://www.youtube-nocookie.com/embed/${video.id}`,
+}));
+---
+
+<header class="site-header" aria-label="Main navigation">
+  <a class="brand" href={localePaths[locale]} aria-label="MotoBarna home">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span>Moto<span>Barna</span></span>
+  </a>
+  <nav class="desktop-nav" aria-label="Page sections">
+    <a href="#practice">{page.nav.practice}</a>
+    <a href="#community">{page.nav.community}</a>
+    <a href="#trips">{page.nav.trips}</a>
+    <a href="#faq">{page.nav.faq}</a>
+  </nav>
+  <div class="header-actions">
+    <a class="language-link" href={localePaths[otherLocale]} hreflang={otherLocale}>
+      {otherLocale === "ru" ? "RU" : "EN"}
+    </a>
+    <a
+      class="button button-small"
+      href={SITE.telegramUrl}
+      aria-label={page.cta.ariaLabel}
+      data-telegram-cta="header"
+    >
+      <span class="plane" aria-hidden="true"></span>
+      {page.cta.label}
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-bg">
+      <img
+        src="/images/motobarna-ai-hero-golden-course.jpg"
+        alt="MotoGymkhana rider turning through cones while riders chat beside motorcycles at sunset"
+        width="1920"
+        height="1245"
+        fetchpriority="high"
+      />
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <p class="eyebrow">{page.hero.eyebrow}</p>
+      <h1 id="hero-title">{page.hero.title}</h1>
+      <p class="hero-lead">{page.hero.lead}</p>
+      <p class="hero-note">{page.hero.note}</p>
+      <div class="hero-actions">
+        <a
+          class="button button-primary"
+          href={SITE.telegramUrl}
+          aria-label={page.cta.ariaLabel}
+          data-telegram-cta="hero"
+        >
+          <span class="plane" aria-hidden="true"></span>
+          {page.cta.label}
+        </a>
+        <span class="handle">{SITE.telegramHandle}</span>
+      </div>
+      <ul class="chips" aria-label="Community highlights">
+        {page.hero.chips.map((chip) => <li>{chip}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="quick-strip" aria-label="Quick facts">
+    {page.hero.stats.map((stat) => (
+      <article>
+        <strong>{stat.value}</strong>
+        <span>{stat.label}</span>
+      </article>
+    ))}
+  </section>
+
+  <section class="section pillars" aria-labelledby="pillars-title">
+    <div class="section-heading">
+      <p class="kicker">{page.pillars.kicker}</p>
+      <h2 id="pillars-title">{page.pillars.title}</h2>
+    </div>
+    <div class="pillar-grid">
+      {page.pillars.items.map((item, index) => (
+        <article class="panel pillar">
+          <span class="index">0{index + 1}</span>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="practice" class="section split" data-track-section="motogymkhana" aria-labelledby="gymkhana-title">
+    <div class="section-copy">
+      <p class="kicker">{page.gymkhana.kicker}</p>
+      <h2 id="gymkhana-title">{page.gymkhana.title}</h2>
+      <p>{page.gymkhana.body}</p>
+      <ul class="check-list">
+        {page.gymkhana.bullets.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+    <div class="gymkhana-media-stack">
+      <figure class="course-concept panel">
+        <div class="course-concept-frame">
+          <img
+            src="/images/motobarna-ai-course-geometry.jpg"
+            alt={page.gymkhana.courseVisual.alt}
+            width="1200"
+            height="1200"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <figcaption>{page.gymkhana.courseVisual.caption}</figcaption>
+      </figure>
+      <figure class="course-board panel">
+        <div class="course-map-frame">
+          <img
+            src="/images/gymkhana-gp-2025-stage-1-map.jpg"
+            alt={page.gymkhana.courseMap.alt}
+            width="1000"
+            height="707"
+            loading="lazy"
+          />
+        </div>
+        <figcaption>
+          <span>{page.gymkhana.courseMap.caption}</span>
+          <a href={page.gymkhana.courseMap.sourceUrl}>{page.gymkhana.courseMap.sourceLabel}</a>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="community" class="section ritual" data-track-section="sunday_community" aria-labelledby="sunday-title">
+    <div class="section-heading narrow">
+      <p class="kicker">{page.sunday.kicker}</p>
+      <h2 id="sunday-title">{page.sunday.title}</h2>
+      <p>{page.sunday.body}</p>
+    </div>
+    <div class="timeline">
+      {page.sunday.steps.map((step, index) => (
+        <article class="timeline-step">
+          <span>{index + 1}</span>
+          <h3>{step.title}</h3>
+          <p>{step.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section gallery" aria-labelledby="gallery-title">
+    <div class="section-heading">
+      <p class="kicker">{page.gallery.kicker}</p>
+      <h2 id="gallery-title">{page.gallery.title}</h2>
+      <p>{page.gallery.body}</p>
+    </div>
+    <div class="photo-grid">
+      {page.gallery.photos.map((photo, index) => (
+        <figure class={`photo-slot photo-${index + 1}`}>
+          <div>
+            <img
+              src={photo.src}
+              alt={photo.alt}
+              loading="lazy"
+              width={photo.width}
+              height={photo.height}
+              decoding="async"
+            />
+            <span>{photo.label}</span>
+          </div>
+          <figcaption>{photo.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <section id="trips" class="section trips" data-track-section="trips" aria-labelledby="trips-title">
+    <div class="section-copy">
+      <p class="kicker">{page.trips.kicker}</p>
+      <h2 id="trips-title">{page.trips.title}</h2>
+      <p>{page.trips.body}</p>
+    </div>
+    <div class="route-grid">
+      {page.trips.routes.map((route) => (
+        <article class="route-card">
+          <h3>{route.name}</h3>
+          <p>{route.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section videos" aria-labelledby="videos-title">
+    <div class="section-heading narrow">
+      <p class="kicker">{page.videos.kicker}</p>
+      <h2 id="videos-title">{page.videos.title}</h2>
+      <p>{page.videos.body}</p>
+    </div>
+    <div class="video-grid">
+      {videoEmbeds.map((video, index) => (
+        <article class="video-card">
+          <iframe
+            src={video.embedUrl}
+            title={page.videos.titles[index]}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; compute-pressure; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+          <a href={video.url}>{video.url}</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section new-here" aria-labelledby="new-here-title">
+    <div class="panel info-panel">
+      <h2 id="new-here-title">{page.newHere.title}</h2>
+      <p>{page.newHere.body}</p>
+      <ul class="check-list">
+        {page.newHere.items.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+    <div class="panel telegram-panel">
+      <h2>{page.finalCta.title}</h2>
+      <p>{page.finalCta.body}</p>
+      <div class="telegram-points">
+        {page.finalCta.points.map((point) => <span>{point}</span>)}
+      </div>
+      <a
+        class="button button-primary"
+        href={SITE.telegramUrl}
+        aria-label={page.cta.ariaLabel}
+        data-telegram-cta="final"
+      >
+        <span class="plane" aria-hidden="true"></span>
+        {page.cta.label}
+      </a>
+    </div>
+  </section>
+
+  <section id="faq" class="section faq" aria-labelledby="faq-title">
+    <div class="section-heading narrow">
+      <p class="kicker">{page.faq.kicker}</p>
+      <h2 id="faq-title">{page.faq.title}</h2>
+    </div>
+    <div class="faq-list">
+      {page.faq.items.map((item) => (
+        <details>
+          <summary>{item.question}</summary>
+          <p>{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+</main>
+
+<a
+  class="sticky-telegram"
+  href={SITE.telegramUrl}
+  aria-label={page.cta.ariaLabel}
+  data-telegram-cta="sticky"
+>
+  <span class="plane" aria-hidden="true"></span>
+  {page.cta.label}
+</a>

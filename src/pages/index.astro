@@ -1,0 +1,11 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import LandingPage from "@/components/LandingPage.astro";
+import { content } from "@/data/content";
+
+const page = content.en;
+---
+
+<BaseLayout page={page} locale="en">
+  <LandingPage page={page} locale="en" />
+</BaseLayout>

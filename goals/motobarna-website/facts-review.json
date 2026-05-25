@@ -1,0 +1,119 @@
+{
+  "stage": "facts",
+  "title": "MotoBarna Website Facts",
+  "goalSlug": "motobarna-website",
+  "facts": [
+    {
+      "id": "fact-1",
+      "text": "The V1 MotoBarna website is a polished one-page landing site implemented as an Astro static site.",
+      "accepted": false,
+      "removed": false,
+      "recommendedAutomatedVerification": true,
+      "automatedVerification": true
+    },
+    {
+      "id": "fact-2",
+      "text": "The first viewport on mobile and desktop presents MotoBarna as a Barcelona MotoGymkhana and motorcycle community, with a visible Telegram CTA.",
+      "accepted": false,
+      "removed": false,
+      "recommendedAutomatedVerification": true,
+      "automatedVerification": true
+    },
+    {
+      "id": "fact-3",
+      "text": "The landing page explains MotoGymkhana as a technical motorcycle time-trial sport with cone courses, course walking, timed runs, clean gates, line choice, and penalties.",
+      "accepted": false,
+      "removed": false,
+      "recommendedAutomatedVerification": true,
+      "automatedVerification": true
+    },
+    {
+      "id": "fact-4",
+      "text": "The landing page shows that MotoBarna is also a social motorcycle community with Sunday parking-lot hangs, coffee, bike chat, help from other riders, and people who can come watch first.",
+      "accepted": false,
+      "removed": false,
+      "recommendedAutomatedVerification": true,
+      "automatedVerification": true
+    },
+    {
+      "id": "fact-5",
+      "text": "The landing page includes group rides and trips around Barcelona and Catalunya, including route references such as Garraf, Montserrat, Montseny, Sitges, or Collserola.",
+      "accepted": false,
+      "removed": false,
+      "recommendedAutomatedVerification": true,
+      "automatedVerification": true
+    },
+    {
+      "id": "fact-6",
+      "text": "The exact parking-lot location is not published publicly; the page says the meeting pin is shared in Telegram.",
+      "accepted": false,
+      "removed": false,
+      "recommendedAutomatedVerification": true,
+      "automatedVerification": true
+    },
+    {
+      "id": "fact-7",
+      "text": "The page includes real-photo slots for MotoGymkhana, hanging out, and trips, and may use placeholders until real community photos are available.",
+      "accepted": false,
+      "removed": false,
+      "recommendedAutomatedVerification": false,
+      "automatedVerification": false
+    },
+    {
+      "id": "fact-8",
+      "text": "The site includes a language switch with at least English and Russian options.",
+      "accepted": false,
+      "removed": false,
+      "recommendedAutomatedVerification": true,
+      "automatedVerification": true
+    },
+    {
+      "id": "fact-9",
+      "text": "The Russian-language content may state that the community is run by Russian-speaking expats in Barcelona.",
+      "accepted": false,
+      "removed": false,
+      "recommendedAutomatedVerification": false,
+      "automatedVerification": false
+    },
+    {
+      "id": "fact-10",
+      "text": "The page includes SEO and AI-search foundations: unique title and meta description, canonical URL, sitemap, robots.txt, Open Graph metadata, visible local/entity copy, and structured data that matches visible content.",
+      "accepted": false,
+      "removed": false,
+      "recommendedAutomatedVerification": true,
+      "automatedVerification": true
+    },
+    {
+      "id": "fact-11",
+      "text": "The page includes privacy-light analytics hooks for Telegram CTA clicks and key section views without collecting personal data.",
+      "accepted": false,
+      "removed": false,
+      "recommendedAutomatedVerification": true,
+      "automatedVerification": true
+    },
+    {
+      "id": "fact-12",
+      "text": "All Telegram CTA buttons point to one shared Telegram destination value, using a safe placeholder if the real invite URL is not available yet.",
+      "accepted": false,
+      "removed": false,
+      "recommendedAutomatedVerification": true,
+      "automatedVerification": true
+    },
+    {
+      "id": "fact-13",
+      "text": "The implementation passes build checks and includes responsive browser QA for mobile and desktop.",
+      "accepted": false,
+      "removed": false,
+      "recommendedAutomatedVerification": true,
+      "automatedVerification": true
+    },
+    {
+      "id": "fact-14",
+      "text": "The implementation checks accessibility basics, including readable contrast, keyboard-accessible CTAs, useful image alt text, and touch-friendly CTA sizing.",
+      "accepted": false,
+      "removed": false,
+      "recommendedAutomatedVerification": true,
+      "automatedVerification": true
+    }
+  ]
+}
