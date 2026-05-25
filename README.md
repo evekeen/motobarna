@@ -31,3 +31,7 @@ npm run preview
 ## SEO
 
 The site ships static HTML with localized canonical/hreflang links, Open Graph tags, JSON-LD, `robots.txt`, and an Astro-generated sitemap. Update `SITE_URL` before deployment if the production domain differs from `https://motobarna.com`.
+
+## Deployment
+
+The site is hosted on GitHub Pages at `https://motobarna.com`. Every push to `main` triggers `.github/workflows/deploy.yml`, which builds with `npm run build` and publishes `dist/` via `actions/deploy-pages`. Pull requests run `.github/workflows/ci.yml` for a build-only check. The custom domain is pinned with `public/CNAME`. DNS records, GitHub UI steps, and rollout sequence are documented in `docs/plans/2026-05-25-github-pages-deployment.md`.
