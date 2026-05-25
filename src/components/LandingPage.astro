@@ -27,9 +27,19 @@ const videoEmbeds = SITE.youtubeVideos.map((video) => ({
     <a href="#faq">{page.nav.faq}</a>
   </nav>
   <div class="header-actions">
-    <a class="language-link" href={localePaths[otherLocale]} hreflang={otherLocale}>
-      {otherLocale === "ru" ? "RU" : "EN"}
-    </a>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <a
+        class="is-active"
+        href={localePaths[locale]}
+        hreflang={locale}
+        aria-current="page"
+      >
+        {locale === "ru" ? "RU" : "EN"}
+      </a>
+      <a href={localePaths[otherLocale]} hreflang={otherLocale}>
+        {otherLocale === "ru" ? "RU" : "EN"}
+      </a>
+    </div>
     <a
       class="button button-small"
       href={SITE.telegramUrl}
@@ -149,14 +159,40 @@ const videoEmbeds = SITE.youtubeVideos.map((video) => ({
       <h2 id="sunday-title">{page.sunday.title}</h2>
       <p>{page.sunday.body}</p>
     </div>
-    <div class="timeline">
-      {page.sunday.steps.map((step, index) => (
-        <article class="timeline-step">
-          <span>{index + 1}</span>
-          <h3>{step.title}</h3>
-          <p>{step.text}</p>
-        </article>
-      ))}
+    <div class="course-timeline" data-course-timeline>
+      <svg class="course-line-svg" viewBox="0 0 1400 110" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <path class="track" d="M 70 80 Q 210 10 350 60 T 700 50 T 1050 60 T 1330 80" />
+        <path class="line" d="M 70 80 Q 210 10 350 60 T 700 50 T 1050 60 T 1330 80" />
+        <g class="gate g1">
+          <path d="M 70 56 L 76 70 L 64 70 Z" />
+          <path d="M 70 104 L 76 90 L 64 90 Z" />
+        </g>
+        <g class="gate g2">
+          <path d="M 350 36 L 356 50 L 344 50 Z" />
+          <path d="M 350 84 L 356 70 L 344 70 Z" />
+        </g>
+        <g class="gate g3">
+          <path d="M 700 26 L 706 40 L 694 40 Z" />
+          <path d="M 700 74 L 706 60 L 694 60 Z" />
+        </g>
+        <g class="gate g4">
+          <path d="M 1050 36 L 1056 50 L 1044 50 Z" />
+          <path d="M 1050 84 L 1056 70 L 1044 70 Z" />
+        </g>
+        <g class="gate g5">
+          <path d="M 1330 56 L 1336 70 L 1324 70 Z" />
+          <path d="M 1330 104 L 1336 90 L 1324 90 Z" />
+        </g>
+      </svg>
+      <div class="timeline">
+        {page.sunday.steps.map((step, index) => (
+          <article class="timeline-step">
+            <span class="step-num">0{index + 1}</span>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -275,3 +311,23 @@ const videoEmbeds = SITE.youtubeVideos.map((video) => ({
   <span class="plane" aria-hidden="true"></span>
   {page.cta.label}
 </a>
+
+<script>
+  const timelines = document.querySelectorAll<HTMLElement>("[data-course-timeline]");
+  if (timelines.length > 0 && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-in-view");
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.35 },
+    );
+    timelines.forEach((el) => observer.observe(el));
+  } else {
+    timelines.forEach((el) => el.classList.add("is-in-view"));
+  }
+</script>
